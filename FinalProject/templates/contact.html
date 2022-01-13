@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   About
+{% endblock %}
+
+{% block active_page %}
+   <li><a href="/">Home</a></li>
+   <li><a href="/about">About</a></li>
+   <li><a href="/contact" class="active">Contact</a></li>
+   <li><a href="/source">Source</a></li>
+{% endblock %}
+
+{% block main %}
+   <div class="form-group">
+      <h1>Contact Me</h1>
+      <form method='POST' action='/contact'>
+         {{ form.csrf_token }}
+         <div class="form-input">
+            {{ form.first_name(class='form-control', placeholder='First Name', autocomplete='off') }}
+            {{ form.last_name(class='form-control', placeholder='Last Name', autocomplete='off') }}
+            {{ form.email(class='form-control', placeholder='Email Address', autocomplete='off' ) }}
+         </div>
+         <div class="form-text">
+            {{ form.text(class='form-control form-message', placeholder='Your Message...', autocomplete='off') }}
+         </div>
+         <div class="form-action">
+            {{ form.submit(class='action-btn') }}
+         </div>
+         <p class="inactive-1200">Copyright © 2021 Eduardo Moraes. All Rights Reserved.</p>
+      </form>
+   </div>
+   <img class="contact-img" src="../static/Group1R.png" alt="A robot at the right side of the page looking at us and seems that it is leaning on the box like when we look through a window.">
+   <p class="copyright3">
+      Copyright © 2021 Eduardo Moraes. All Rights Reserved.
+   </p>
+{% endblock %}

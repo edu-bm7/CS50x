@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   About
+{% endblock %}
+
+{% block active_page %}
+   <li><a href="/">Home</a></li>
+   <li><a href="/about">About</a></li>
+   <li><a href="/contact">Contact</a></li>
+   <li><a href="/source" class="active">Source</a></li>
+{% endblock %}
+
+{% block main %}
+   <div class="content">
+      <div id="source-text">
+         <h1>Source Code</h1>
+         <a href="https://github.com/EduBM7/CS50x/tree/main/FinalProject" target="_blank" rel="noopener noreferrer" id="git-logo"><img src="../static/github.png" alt="Github Logo. This image leads to the same page as the text bellow."></a>
+         <p id="git-text" style="font-weight: bold; padding-bottom: 30px;">Github</p>
+         <p id="source-copy">
+            That links to a repository in my Github page, where I have all my projects and works. If you liked my work, feel free to contact me and leave a message.
+         </p>
+         <a href="/contact" class="action-btn">Contact Me</a>
+         <p class="inactive-1200">
+            Copyright © 2021 Eduardo Moraes. All Rights Reserved.
+         </p>
+      </div>
+      <div id="source-img">
+         <img src="../static/Group2R.png" alt="Robot showing up from behind the Source code text, looking at us.">
+      </div>
+   </div>
+   <p class="copyright2">
+      Copyright © 2021 Eduardo Moraes. All Rights Reserved.
+   </p>
+{% endblock %}

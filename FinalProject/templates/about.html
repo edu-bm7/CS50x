@@ -1,0 +1,225 @@
+{% extends "layout.html" %}
+{% block title %}
+   About
+{% endblock %}
+
+{% block active_page %}
+   <li><a href="/">Home</a></li>
+   <li><a href="/about" class="active">About</a></li>
+   <li><a href="/contact">Contact</a></li>
+   <li><a href="/source">Source</a></li>
+{% endblock %}
+
+{% block main %}
+   <div class="content">
+      <div id="about-text">
+            <div class="scroll-me center-text">
+               <p>Scroll Me Down</p>
+               <div class="center-arrow" id="#trigger">
+                  <span style="font-size: 36px;">&#8595;</span>
+               </div>
+            </div>
+            <div class="scroll-text">
+               <div class="pinTrigger">
+                  <h2 class="title">About</h2>
+                  <p class="text-scrll">This project was made with the pourpose to build a Website to show my skills as a Full-Stack developer.</p>
+               </div>
+            </div>
+            <div class="scroll-text">
+               <div class="pinTrigger">
+                  <h2 class="title">I'm Not A Web-Designer</h2>
+                  <p class="text-scrll"> For this project I made a Glassmorphism Website based on the <a class="link-about" href="https://www.youtube.com/watch?v=zSg4_d6Qhzc" target="_blank" rel="noopener noreferrer">Online Tutorials</a> Glassmorphism Landpage video. I did not copy his code, I also created the layout for the other pages in Figma and I added alot of funtionality to the website.</p>
+               </div>
+            </div>
+            <div class="scroll-text">
+               <div class="pinTrigger">
+                  <h2 class="title">Scroll</h2>
+                  <p class="text-scrll"> For the scrolling effects in this container I used GSAP Library with ScrollTrigger Plugin.</p>
+               </div>
+            </div>
+            <div class="scroll-text">
+               <div class="pinTrigger">
+                  <h2 class="title">What's Behind It</h2>
+                  <p class="text-scrll">The Back-End was made with Flask(Python) and SQLite3 as the database(to capture leads for marketing porpouse). The Front-End is written in HTML, CSS and JavaScript.</p>
+               </div>
+            </div>
+            <div class="scroll-text">
+               <div class="pinTrigger">
+                  <h2 class="title">Why Not Bootsrap?!</h2>
+                  <p class="text-scrll">I didn't want to use a CSS framework(Like Bootstrap or Tailwind) so I could challenge myself and do everything from scratch, also to not rewrite the whole UI kits available in the Frameworks.</p>
+               </div>
+            </div>
+            <div class="scroll-text last-text">
+               <div class="pinTrigger">
+                  <h2 class="title">The Source Code</h2>
+                  <p class="text-scrll">If you are interest in the Source Code for this project, check it out in the link bellow.</p>
+                  <div class="scroll-btn">
+                     <a class="action-btn" href="/source">Source Code</a>
+                  </div>
+               </div>
+            </div>
+      </div>
+      <div id="about-img">
+         <img src="../static/Group3.png" alt="Robot presenting the left side 'About' text.">
+      </div>
+   </div>
+   <p class="copyright4">
+      Copyright © 2021 Eduardo Moraes. All Rights Reserved.
+   </p>
+   <script>
+      gsap.registerPlugin(ScrollTrigger);
+   
+      var title = document.getElementsByClassName('title');
+      var t_len = title.length;
+      var text = document.getElementsByClassName('text-scrll');
+      var pin = document.getElementsByClassName('pinTrigger')
+   
+      for(i = 0; i < t_len; i++) {
+         if (i === 0) {
+            let triggerElement = title[i];
+            let targetElement1 = title[i];
+            let targetElement2 = text[i];
+            let targetPin = pin[i];
+   
+            let tl = gsap.timeline({
+               scrollTrigger: {
+                  trigger: triggerElement,
+                  toggleActions: "play reverse play reverse",
+                  scroller: '#about-text',
+                  pin: targetPin,
+                  scrub: 1,
+                  start: 'top 25%',
+                  end: '+=1000px'
+               }
+            });
+   
+            tl.from(targetElement1, {
+               x: '100%',
+               opacity: '0',
+               duration: 1,
+               ease: 'power3.out'
+            })
+   
+            tl.from(targetElement2, {
+               y: '200%',
+               opacity: '0',
+               duration: 2,
+               ease: 'power3.out'
+            }, '<')
+         }
+         if ((3*i+1) > t_len){
+            break;
+         }
+         let triggerElement = title[3*i+1];
+         let targetElement1 = title[3*i+1];
+         let targetElement2 = text[3*i+1];
+         let targetPin = pin[3*i+1];
+   
+         let tl = gsap.timeline({
+            scrollTrigger: {
+               trigger: triggerElement,
+               toggleActions: "play reverse play reverse",
+               scroller: '#about-text',
+               pin: targetPin,
+               scrub: true,
+               start: 'top 25%',
+               end: '+=1000px'
+            }
+         });
+   
+         tl.from(targetElement1, {
+            x: '-100%',
+            duration: 1,
+            ease: 'elastic.out'
+         })
+   
+         tl.from(targetElement2, {
+            y: '300%',
+            opacity: '0',
+            duration: 2,
+            ease: 'power3.out'
+         }, '<')
+   
+      }
+   
+      for(i = 0; i < t_len; i++) {
+         if ((3*i+3) > t_len){
+            break;
+         }
+         let triggerElement = title[3*i+3];
+         let targetElement1 = title[3*i+3];
+         let targetElement2 = text[3*i+3]
+         let targetPin = pin[3*i+3];
+   
+         let tl = gsap.timeline({
+            scrollTrigger: {
+               trigger: triggerElement,
+               toggleActions: "play reverse play reverse",
+               scroller: '#about-text',
+               pin: targetPin,
+               scrub: .8,
+               start: 'top 20%',
+               end: '+=1000px'
+            }
+         });
+   
+         tl.from(targetElement1, {
+            y: '100%',
+            opacity: '0',
+            duration: .5,
+            ease: 'power3.out'
+         })
+   
+         tl.from(targetElement2, {
+            x: '200%',
+            opacity: '0',
+            duration: 1,
+            ease: 'elastic.out'
+         }, '<')
+         if (i === 1) {
+            tl.from('.scroll-btn', {
+               y: '-200%',
+               opacity: '0',
+               duration: 2,
+               ease: 'power3.out'
+            }, '<')
+         }
+      }
+   
+      for(i = 0; i < t_len; i++) {
+         if ((3*i+2) > t_len){
+            break;
+         }
+         let triggerElement = title[3*i+2];
+         let targetElement1 = title[3*i+2];
+         let targetElement2 = text[3*i+2];
+         let targetPin = pin[3*i+2];
+   
+         let tl = gsap.timeline({
+            scrollTrigger: {
+               trigger: triggerElement,
+               toggleActions: "play reverse play reverse",
+               scroller: '#about-text',
+               pin: targetPin,
+               scrub: 1,
+               start: 'top -15%',
+               end: '+=1000px'
+            }
+         });
+   
+         tl.from(targetElement1, {
+            y: '-100%',
+            opacity: '0',
+            duration: 1,
+            ease: 'power3.out'
+         })
+   
+         tl.from(targetElement2, {
+            y: '100%',
+            opacity: '0',
+            duration: 1,
+            ease: 'power3.out'
+         }, '<')
+      }
+   </script>
+{% endblock %}

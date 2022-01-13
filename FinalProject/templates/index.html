@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block title %}
+   EduBM7 CS50x
+{% endblock %}
+
+{% block active_page %}
+   <li><a href="/" class="active">Home</a></li>
+   <li><a href="/about">About</a></li>
+   <li><a href="/contact">Contact</a></li>
+   <li><a href="/source">Source</a></li>
+{% endblock %}
+
+{% block main %}
+   <div class="content">
+      <div id="main-text">
+         <h1>Have fun with this website !</h1>
+         <p>This is a website made for Harvard’s CS50x Final Project, where I had the freedom to build anything I wanted using the knowledge acquired in the whole course. 
+         </p>
+         <a class="action-btn" href="/about">Read More</a>
+      </div>
+      <div id="main-img">
+         <img src="../static/Component2.png" alt="Robot with a headset and a laptop">
+      </div>
+   </div>
+   <p class="copyright">
+      Copyright © 2021 Eduardo Moraes. All Rights Reserved.
+   </p>
+{% endblock %}
+
+{% block section2 %}
+   <section>
+      <div class="container2">
+      </div>
+      <div class="about-content">
+         <h2>About</h2>
+         <p>This project was made with the pourpose to make a beautiful UI with accessibility in mind, improving the UX
+            for  all users.
+            <br>
+            For this project I made a Glassmorphism Website with the Back-End in Flask(Python) and MySQL as the Database. The Front-End is written in HTML, CSS and JavaScript.
+            <br>
+            The reason I didn’t use a CSS Framework(like Bootstrap) was because I felt that I would rewrite most of the pre-define UI Kit.
+         </p>
+      </div>
+      <p class="copyright2">
+         Copyright © 2021 Eduardo Moraes. All Rights Reserved.
+      </p>
+   </section>
+{% endblock %}
