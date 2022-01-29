@@ -13,12 +13,12 @@ For the scrolling effects in this container I used GSAP Library with ScrollTrigg
 I didn't want to use a CSS framework(Like Bootstrap or Tailwind) so I could challenge myself and do everything from scratch, also to not rewrite the whole UI kits available in the Frameworks.
 
 ## Explaining the Code
------------------------
+
 
 Let's start with our [application.py](project/application.py) file.
 
 ## Configuration of the application
------------------------------------
+
 
 Right at the top of the file, you'll see all the modules required to our website work.
 
@@ -54,7 +54,7 @@ def after_request(response):
 ```
 
 ## The Routes
--------------
+
 There is nothing special about our routes, except in the contact page route.
 
 There we first initiate our form.
@@ -84,7 +84,7 @@ Now, let's have a look at our **Templates**
 
 
 ## Templates
--------------------
+
 ### **Layout**
 
 Let's check out our [Layout](project/templates/layout.html) page.
