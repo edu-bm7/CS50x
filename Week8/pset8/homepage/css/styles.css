@@ -1,0 +1,333 @@
+/** {*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*}*/
+
+html,
+body {
+    height: 100%;
+    font-size: 1rem;
+}
+
+img {
+    width: 100%;
+}
+
+.bg-hard-dark{
+    background-color: #121212;
+}
+
+.bg-light-div {
+    background-color: #fafafa;
+}
+
+.page-header {
+    padding: 16em;
+    /* height:500px; */
+    min-height: 12rem;
+}
+
+
+
+header {
+  min-height: 56px;
+}
+
+#body-page {
+    margin-bottom: 3em;
+}
+
+#crsl-item-1 {
+    background-image: url('../img/paulista.jpg');
+    background-size: cover;
+    background-position: 57% 57%;
+}
+
+@media (max-height: 1280px){
+    #crsl-item-1{
+        height: auto;
+    }
+}
+@media(max-width:768px){
+    /* .page-header{ */
+        /* height:auto; */
+    /* } */
+}
+
+.mh-300 {
+  min-height: 300px;
+}
+
+#body-page {
+    margin-left: 3em;
+    margin-right: 3em;
+}
+
+#martini{
+    height:300px;
+    object-fit: cover;
+    width: 100%;
+}
+
+#masp{
+    height:300px;
+    object-fit: cover;
+    width: 100%;
+}
+
+#pacaembu{
+    height: 300px;
+    object-fit: cover;
+    width: 100%;
+}
+
+#tourism-header {
+    background-image: url('../img/estaiada2.jpg');
+    background-size: cover;
+    background-position: center 26%;
+    width: 100%;
+}
+
+#img-5{
+    background-image: url('../img/train.jpg');
+    background-size: cover;
+    background-position: center 37%;
+    width: 100%;
+}
+
+#img-6{
+    background-image: url('../img/martini2.jpg');
+    background-size: cover;
+    background-position: center 62%;
+    width: 100%;
+}
+
+
+.text-content-dark {
+    color: #fcfcfc;
+}
+
+.text-content {
+    color: #121212;
+}
+
+.center {
+    line-height: 100%;
+}
+
+.center p{
+    display: inline-block;
+    line-height: normal;
+    vertical-align: middle;
+}
+
+#popup {
+    display: none;
+    color: #121212;
+}
+
+footer {
+
+    margin: 30px 50px 20px 50px;
+    min-height: 250px;
+
+
+}
+
+footer hr {
+    color: #939494;
+}
+
+.inline-list li {
+    display: inline;
+    padding: 0px 16px 0px 0px;
+}
+
+#git-icon {
+    margin-left: -30px;
+}
+
+.list-group {
+    list-style-type: none;
+}
+
+.link-item {
+    background-color: #121212 !important;
+    color: #939494;
+}
+
+.pd-head {
+    padding: 0px 16px 0px 16px;
+}
+
+.pd-item {
+    padding: 8px 16px 8px 16px;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #fafafa;
+}
+
+#about-content a {
+  color: #acacac;
+}
+
+#about-content a:link {
+  text-decoration: none;
+}
+
+#about-content a:hover {
+  color: #fcfcfc;
+  text-decoration: underline;
+}
+
+.title-link {
+    color: lightskyblue;
+}
+
+
+.title-link:hover {
+    text-decoration: underline;
+    color: lightskyblue;
+}
+
+
+
+#popup-link {
+    text-decoration: underline;
+}
+
+#popup-link:hover {
+    color: blue;
+}
+
+.middle-item {
+    min-width: 200px;
+}
+
+#nightlife-row {
+    margin-bottom: 30px;
+}
+
+.ntlf-body {
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.bd-content {
+    border-right: 9px solid #121212;
+    border-left: 9px solid #121212;
+}
+
+.bd-r {
+  border-right: 9px solid #121212;
+}
+
+.bd-l {
+  border-left: 9px solid #121212;
+}
+
+.nt-img {
+    height: 25em;
+    object-fit: cover;
+}
+
+.cr-img{
+    height: 35em;
+    object-fit: cover;
+
+}
+
+@media only screen and (max-height: 768px) {
+    .cr-img{
+        height: auto !important;
+    }
+
+    .nt-img{
+        height: auto !important;
+    }
+
+    #body-page {
+        margin: 0px 0px;
+    }
+    footer {
+        margin: 0 0;
+    }
+}
+
+.subs-b {
+    padding-top: 20px;
+    font-family: "Open Sans", sans-serif;
+    text-align: center;
+    color: #fafafa;
+}
+.subs-b h5 {
+    font-weight: 400;
+    font-size: 14px;
+}
+.subs-b p {
+    font-weight: 300;
+    font-size: 12px;
+}
+
+#subs_carousel {
+    margin-top: 15px;
+    border-top: 2px solid #fafafa;
+    overflow: hidden;
+}
+
+
+.subs-b span.activeLeft {
+    opacity: 0;
+    transform: translateX(100%);
+    animation: captionLeft 1s forwards;
+    display: block;
+}
+
+.subs-b span.activeRight {
+    opacity: 0;
+    transform: translateX(-100%);
+    animation: captionRight 1s forwards;
+    display: block;
+}
+
+@keyframes captionLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+
+    50% {
+      opacity: 0.4;
+      transform: translateX(0);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+}
+
+@keyframes captionRight {
+    0% {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+
+    50% {
+      opacity: 0.4;
+      transform: translateX(0);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+}
+
+
+

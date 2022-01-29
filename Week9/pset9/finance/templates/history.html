@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+<div class="section">
+    <h2>History of Transactions</h2>
+    <table>
+        <thead>
+            <tr>
+                <th class="w15-th">Stock Symbol</th>
+                <th>Company Name</th>
+                <th>Shares</th>
+                <th>Bought Price</th>
+                <th class="w15-th">Total</th>
+                <th class="w15-th">Operation</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stock in stocks %}
+                <tr class="operation-{{ stock.operation }}">
+                    <td>{{ stock.symbol }}</td>
+                    <td>{{ stock.name }}</td>
+                    <td>{{ stock.shares }}</td>
+                    <td>{{ stock.price | usd }}</td>
+                    <td>{{ stock.total | usd }}</td>
+                    <td>{{ stock.operation }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script>
+    for (let i = 0; i < document.querySelectorAll('.operation-Sell').length; i++) {
+        document.querySelectorAll('.operation-Sell')[i].style.color = 'red';
+    }
+
+    for (let i = 0; i < document.querySelectorAll('.operation-Buy').length; i++) {
+        document.querySelectorAll('.operation-Buy')[i].style.color = 'green';
+    }
+
+</script>
+{% endblock %}

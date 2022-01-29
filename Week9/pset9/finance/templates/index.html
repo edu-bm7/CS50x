@@ -1,0 +1,165 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <div class="section">
+        <h2>Stock Bought</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th class="w15-th">Stock Symbol</th>
+                    <th>Company Name</th>
+                    <th>Shares</th>
+                    <th class="w15-th">Current Price</th>
+                    <th>Total</th>
+                    <th>Appreciation</th>
+                    <th class="w20-th">Options</th>
+                </tr>
+                <tr>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for stock in stocks %}
+                {% include "./modal.html" %}
+                    <tr>
+                        <td>{{ stock.symbol }}</td>
+                        <td>{{ stock.name }}</td>
+                        <td>{{ stock.shares }}</td>
+                        <td id="crt-price-{{ stock.symbol }}">{{ stock.currentPrice | usd}}</td>
+                        <td id="stck-total-{{ stock.symbol }}">{{ stock.total | usd }}</td>
+                        <td id="appr-value-{{ stock.symbol }}">{{ stock.appreciation | appreciation }}</td>
+                        <td>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#buy-{{ stock.symbol }}">Buy More</button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sell-{{ stock.symbol }}">Sell Stocks</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <th style="font-weight: bold;">Stocks Total</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style="font-weight: bold;" id="stck-balance">{{ stock_cash | usd}}</td>
+                    <td id="stck-appr">{{ stocks_appr | appreciation }} </td>
+                    <td></td>
+                </tr>
+                <tr class="changeHandler">
+                    <th style="font-weight: bold;">Current Balance</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style="font-weight: bold;" id="balance-value">{{ balance | usd }}</td>
+                    <td id="blc-appr">{{ balance_appr | appreciation }}</td>
+                    <td></td>
+                </tr>
+                <tr class="changeHandler">
+                    <th style="font-weight: bold;">CASH</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style="font-weight: bold;" id="cash-value">{{ cash | usd }}</td>
+                    <td></td>
+                    <td>
+                        {% include "./cash.html" %}
+                        <button button type="button" class="btn btn-success" data-toggle="modal" data-target="#cash">Add Cash</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        // a formatter for the currency values
+        var formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+
+
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 2,
+        });
+        // AJAX function that call the server every 5 secs
+        setInterval(function() {
+                $.ajax({
+                  url: "/",
+                  method: "POST",
+                  dataType: "JSON",
+                  success: function (data) {
+                    try {
+                        if (data.message)
+                               throw data.message;
+                        for (let id in data.stocks) {
+                            let price = data.stocks[id].currentPrice;
+                            let total = data.stocks[id].currentTotal;
+                            let appr = data.stocks[id].appreciation.toFixed(3);
+
+                            let crt_price = "crt-price-" + data.stocks[id].symbol;
+                            let stck_total = "stck-total-" + data.stocks[id].symbol;
+                            let appr_id = "appr-value-" + data.stocks[id].symbol;
+
+                            document.getElementById(crt_price).innerHTML = formatter.format(price);
+                            document.getElementById(stck_total).innerHTML = formatter.format(total);
+                            document.getElementById(appr_id).innerHTML = appr + '%';
+                            if (appr < 0) {
+                            document.getElementById(appr_id).style.color = 'red';
+                            }
+                            else if (appr > 0) {
+                                document.getElementById(appr_id).style.color = 'green';
+                            } else {
+                                document.getElementById(appr_id).style.color = 'black';
+                            }
+
+                        }
+
+                        let blc_appr = data.blc_appr.toFixed(3);
+                        if (blc_appr < 0) {
+                            document.getElementById("blc-appr").style.color = 'red';
+                        }
+                        else if (blc_appr > 0) {
+                            document.getElementById("blc-appr").style.color = 'green';
+                        } else {
+                            document.getElementById("blc-appr").style.color = 'black';
+                        }
+
+                        let stck_appr = data.stck_appr.toFixed(3);
+                        if (stck_appr < 0) {
+                            document.getElementById("stck-appr").style.color = 'red';
+                        }
+                        else if (stck_appr > 0) {
+                            document.getElementById("stck-appr").style.color = 'green';
+                        } else {
+                            document.getElementById("stck-appr").style.color = 'black';
+                        }
+
+                        let cash_balance = formatter.format(data.cash_balance);
+                        let stck_balance = formatter.format(data.stck_balance);
+
+                        document.getElementById("balance-value").innerHTML = stck_balance;
+                        document.getElementById("stck-appr").innerHTML = stck_appr + '%';
+                        document.getElementById("blc-appr").innerHTML = blc_appr + '%';
+                        document.getElementById("balance-value").innerHTML = cash_balance;
+                    } catch (ex) {
+
+                            console.log(ex);
+
+                            if (ex.message) {
+                                alert(ex.message);
+
+                            } else {
+                                alert(ex);
+
+                            }
+
+                    }
+                    }, error: function (error) {
+                        console.log(error);
+
+                }
+            });
+        }, 7000);
+    </script>
+{% endblock %}
