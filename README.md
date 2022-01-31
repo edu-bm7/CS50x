@@ -1,7 +1,11 @@
 # EduBM7 CS50x from Harvard University
 This is my CS50x exercises from Harvard University. 
 
-**Weeks 1-7** are made with C language.
+**Weeks 1-5** are made with C language.
+
+**Week 6** is Python exercises.
+
+**Week 7** is SQL exercises.
 
 **Week 8** exercises are with HTML, CSS and JavaScript.
 
