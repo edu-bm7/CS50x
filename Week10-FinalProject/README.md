@@ -94,9 +94,9 @@ Our `<head>` tag has everything we need for our website, that's includes google 
 Notice that on my `<body>` tag I have a `onload` function call. That's a message, sugesting the user to use either Chrome, Opera or Safari, due to Backdrop-Filter blur incompatibilities.
 
 At our `<header>` tag we got our flashes messages, then we got our `<nav>` tag inside our header.
-Notice that I have dinamicly choose how to change classes in the nav bar, so we can change the active page. We could do this with javascript. I just found that way easy.
+Notice that I have dinamicly choose how to change classes in the nav bar, so we can change the active page. We could do this with javascript. I just found that way easier.
 
-We then have finally, our main block, wich each template will have its own.
+We then have finally, our main block, in which each template will have its own.
 
 The others templates doesn't have anything special, just normal html, with
 the exception of the [About](project/templates/about.html) page.
@@ -109,7 +109,7 @@ From the HTML, the only thing to pay attention is the `id="#trigger"` and the cl
 
 So let's check out the `<script>` tag where the GSAP code with the ScrollTrigger plugin is written.
 
-Right at the first line, for those who never used GSAP plugins before, there is the function to register the ScrollTrigger Plugin.
+Right at the first line, for those who never used GSAP plugins before is the function to register the ScrollTrigger Plugin.
 
 The GSAP with ScrollTrigger Plugin enable us to easily animate elements when they enter the viewport with absolutely freedom.
 
